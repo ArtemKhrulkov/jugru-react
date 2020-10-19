@@ -4,8 +4,8 @@ import { observer } from "mobx-react-lite";
 import { useStores } from "../../hooks";
 
 const Filter = observer(() => {
-  const { lecturesStore } = useStores();
-  const { onFilterTalks, onFilterClear } = lecturesStore;
+  const { talksStore } = useStores();
+  const { onFilterTalks, onFilterClear } = talksStore;
 
   return (
     <div className="App-filter-textInputAndButton">

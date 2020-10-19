@@ -14,7 +14,7 @@ class ApiService {
     });
   }
 
-  async getLectures(): Promise<TalksData[]> {
+  async getTalks(): Promise<TalksData[]> {
     const res: TalksApiData = (await this.apiCall("/lectures", "GET")) as TalksApiData;
     return res.data;
   }

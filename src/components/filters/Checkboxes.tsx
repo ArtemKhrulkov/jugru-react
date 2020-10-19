@@ -6,8 +6,8 @@ import { useStores } from "../../hooks";
 const checkboxesButtons = ["RU", "EN", "HOT", "INTERMEDIATE", "ADVANCED", "HARDCORE", "ACADEMIC"];
 
 const Checkboxes = observer(() => {
-  const { lecturesStore } = useStores();
-  const { onFilterCheckBoxClick } = lecturesStore;
+  const { talksStore } = useStores();
+  const { onFilterCheckBoxClick } = talksStore;
 
   return (
     <div>

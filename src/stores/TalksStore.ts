@@ -13,9 +13,9 @@ export class TalksStore {
     makeAutoObservable(this);
   }
 
-  requestLectures = async (): Promise<boolean> => {
-    const lectures: TalksData[] = await ApiService.getLectures();
-    this.setLectures(lectures);
+  requestTalks = async (): Promise<boolean> => {
+    const talks: TalksData[] = await ApiService.getTalks();
+    this.setLectures(talks);
     return true;
   };
 
@@ -23,11 +23,11 @@ export class TalksStore {
     this.talks = value;
   };
 
-  getLectures = (): TalksData[] => {
+  getTalks = (): TalksData[] => {
     return this.talks;
   };
 
-  getFilteredLectures = (): TalksData[] => {
+  getFilteredTalks = (): TalksData[] => {
     return this.filteredTalks;
   };
 

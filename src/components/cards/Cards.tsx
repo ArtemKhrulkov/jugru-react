@@ -6,25 +6,25 @@ import { useEffect, useMemo, useState } from "react";
 import { useStores } from "../../hooks";
 
 const Cards = observer(() => {
-  const { lecturesStore } = useStores();
-  const observableLectures: TalksData[] = lecturesStore.getLectures();
-  const observableFilteredLectures: TalksData[] = lecturesStore.getFilteredLectures();
-  const [lectures, setLectures] = useState([] as TalksData[]);
+  const { talksStore } = useStores();
+  const observableTalks: TalksData[] = talksStore.getTalks();
+  const observableFilteredTalks: TalksData[] = talksStore.getFilteredTalks();
+  const [talks, setTalks] = useState([] as TalksData[]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (lectures.length > 0) {
+    if (talks.length > 0) {
       setLoading(false);
     }
-  }, [lectures]);
+  }, [talks]);
 
   useMemo(() => {
-    setLectures(observableLectures);
-  }, [observableLectures]);
+    setTalks(observableTalks);
+  }, [observableTalks]);
 
   useMemo(() => {
-    setLectures(observableFilteredLectures);
-  }, [observableFilteredLectures]);
+    setTalks(observableFilteredTalks);
+  }, [observableFilteredTalks]);
 
   return (
     <main className="App-cards-main">
@@ -32,8 +32,8 @@ const Cards = observer(() => {
         <p>Loading...</p>
       ) : (
         <React.Fragment>
-          {lectures.length > 0 ? (
-            lectures.map((lecture: TalksData) => {
+          {talks.length > 0 ? (
+            talks.map((lecture: TalksData) => {
               const tags = lecture.tags.join(" / ").toUpperCase();
               return (
                 <section className="App-cards-section" key={`id-${lecture.id}`}>

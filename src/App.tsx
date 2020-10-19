@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 import { useStores } from "./hooks";
 
 const App = observer(() => {
-  const { lecturesStore } = useStores();
+  const { talksStore } = useStores();
 
   useEffect(() => {
-    lecturesStore.requestLectures();
+    talksStore.requestTalks();
   });
 
   return (
