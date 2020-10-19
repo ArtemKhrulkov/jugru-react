@@ -1,0 +1,37 @@
+.App-filter-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+.App-filter-textInputAndButton {
+    display: flex;
+    align-items: center;
+}
+
+.App-filter-textInput {
+    margin-right: 10px;
+}
+
+.App-filter-checkboxes {
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 768px)  {
+    .App-filter-header{
+        flex-direction: column;
+        justify-content: space-between;
+        width: 400px;
+        margin-left: 20px;
+    }
+
+    .App-filter-textInputAndButton {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .App-filter-checkboxes {
+        margin-top: 10px;
+    }
+}

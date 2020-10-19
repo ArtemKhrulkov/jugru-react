@@ -1,0 +1,55 @@
+import * as React from "react";
+import "./Cards.css";
+import { observer } from "mobx-react-lite";
+import { TalksData } from "../../types/TalksData";
+import { useEffect, useMemo, useState } from "react";
+import { useStores } from "../../hooks";
+
+const Cards = observer(() => {
+  const { lecturesStore } = useStores();
+  const observableLectures: TalksData[] = lecturesStore.getLectures();
+  const observableFilteredLectures: TalksData[] = lecturesStore.getFilteredLectures();
+  const [lectures, setLectures] = useState([] as TalksData[]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (lectures.length > 0) {
+      setLoading(false);
+    }
+  }, [lectures]);
+
+  useMemo(() => {
+    setLectures(observableLectures);
+  }, [observableLectures]);
+
+  useMemo(() => {
+    setLectures(observableFilteredLectures);
+  }, [observableFilteredLectures]);
+
+  return (
+    <main className="App-cards-main">
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <React.Fragment>
+          {lectures.length > 0 ? (
+            lectures.map((lecture: TalksData) => {
+              const tags = lecture.tags.join(" / ").toUpperCase();
+              return (
+                <section className="App-cards-section" key={`id-${lecture.id}`}>
+                  <p className="App-cards-title">{lecture.title}</p>
+                  <p className="App-cards-speaker">{lecture.speaker}</p>
+                  <p className="App-cards-tags">{tags}</p>
+                </section>
+              );
+            })
+          ) : (
+            <p>No Talks</p>
+          )}
+        </React.Fragment>
+      )}
+    </main>
+  );
+});
+
+export default Cards;

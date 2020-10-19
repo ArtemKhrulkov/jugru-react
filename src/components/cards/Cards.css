@@ -1,0 +1,35 @@
+.App-cards-main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 550px;
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 768px)  {
+    .App-cards-main{
+        margin-left: 0;
+    }
+}
+
+.App-cards-section {
+    border: 2px solid black;
+    width: 250px;
+    height: 200px;
+    margin-top: 20px;
+    padding-left: 10px;
+}
+
+.App-cards-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.App-cards-speaker {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.App-cards-tags {
+    font-size: 14px;
+}
