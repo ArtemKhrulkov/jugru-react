@@ -15,11 +15,11 @@ export class TalksStore {
 
   requestTalks = async (): Promise<boolean> => {
     const talks: TalksData[] = await ApiService.getTalks();
-    this.setLectures(talks);
+    this.setTalks(talks);
     return true;
   };
 
-  setLectures = (value: TalksData[]): void => {
+  setTalks = (value: TalksData[]): void => {
     this.talks = value;
   };
 
