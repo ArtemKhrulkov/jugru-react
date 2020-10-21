@@ -9,7 +9,7 @@ const Cards = observer(() => {
   const { talksStore } = useStores();
   const observableTalks: TalksData[] = talksStore.getTalks();
   const observableFilteredTalks: TalksData[] = talksStore.getFilteredTalks();
-  const [talks, setTalks] = useState([] as TalksData[]);
+  const [talks, setTalks] = useState<TalksData[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
