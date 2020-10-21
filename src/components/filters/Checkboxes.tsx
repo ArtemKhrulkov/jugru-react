@@ -11,26 +11,21 @@ const Checkboxes = observer(() => {
   const { talksStore } = useStores();
 
   const onFilterCheckBoxClick = (e: ChangeEvent<HTMLInputElement>): void => {
-    const talks = talksStore.getTalks();
-    const checkboxes = talksStore.getFilterCheckboxes();
-
     if (e.target.checked) {
       talksStore.pushFilterCheckboxes({ checkbox: e.target, value: e.target.value.toLowerCase() });
     } else {
-      const idx = checkboxes.findIndex(({ value }) => value === e.target.value.toLowerCase());
+      const idx = talksStore.getFilterCheckboxes().findIndex(({ value }) => value === e.target.value.toLowerCase());
       talksStore.spliceFilterCheckboxes(idx);
     }
 
     const filterInput = talksStore.getFilterInput();
-    const filteredTalks = talksStore.getFilteredTalks();
+    talksStore.setFilteredTalks(filterArrayWithCheckboxes(talksStore.getTalks(), talksStore.getFilterCheckboxes()));
 
-    talksStore.setFilteredTalks(filterArrayWithCheckboxes(talks, checkboxes));
-
-    if (filteredTalks.length === 0) {
+    if (talksStore.getFilteredTalks().length === 0) {
       if (filterInput) {
-        talksStore.setFilteredTalks(filterArrayWithString(filterInput.value, talks));
+        talksStore.setFilteredTalks(filterArrayWithString(filterInput.value, talksStore.getTalks()));
       } else {
-        talksStore.setFilteredTalks(talks);
+        talksStore.setFilteredTalks(talksStore.getTalks());
       }
     }
   };
